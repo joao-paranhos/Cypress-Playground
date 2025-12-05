@@ -5,7 +5,7 @@ O objetivo é explorar funcionalidades do Cypress, aplicar boas práticas de aut
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Node.js**
 - **Cypress**
@@ -13,9 +13,51 @@ O objetivo é explorar funcionalidades do Cypress, aplicar boas práticas de aut
 
 ---
 
-## 📦 Instalação
+## Instalação
 
-Clone o repositório:
+Clone o repositório no local desejado:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/Cypress-Playground.git
+git clone https://github.com/joao-paranhos/Cypress-Playground.git
+```
+Acesse a pasta do projeto no local clonado:
+```bash
+cd C:/exemplo/Cypress-Playground
+```
+Instale as dependências:
+```bash
+npm install
+```
+Como Executar os Testes:
+```bash
+npx cypress run
+```
+```bash
+Cypress-Playground/
+│
+├── cypress/
+│   ├── e2e/               # Testes automatizados
+│   ├── fixtures/          # Massa de dados
+│   ├── support/           # Comandos personalizados e utilidades
+│   └── ...
+│
+├── cypress.config.js      # Configurações do Cypress
+├── package.json
+└── README.md
+```
+
+Objetivo do Repositório:
+
+- **Praticar comandos fundamentais e avançados do Cypress**
+
+- **Explorar boas práticas de automação**
+
+- **Aplicar cenários reais propostos no curso**
+
+- **Criar uma base sólida para futuros projetos de testes automatizados**
+
+📚 Créditos
+
+Curso: Cypress Playground
+
+Instrutor: Walmyr Filho
