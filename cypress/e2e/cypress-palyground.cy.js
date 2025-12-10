@@ -1,7 +1,12 @@
 describe('Spec criada para realizar os exercicios do cypress playground', () => {
 
   beforeEach(() => {
+      const nowDate = new Date(Date.UTC(2025, 5, 11))
+    cy.clock(nowDate)
     cy.visit('https://cypress-playground.s3.eu-central-1.amazonaws.com/index.html')
+ 
+    
+
   })
   it('Utilizando o comando click para clicar em um botão', () => {
     cy.contains('button', 'Subscribe').click()
@@ -88,4 +93,60 @@ describe('Spec criada para realizar os exercicios do cypress playground', () => 
     .should('be.visible')
   })
 
+  Cypress._.times(10,i =>{
+    
+    it(`${i+1} Altera valor de input range 10 vezes usando invoke e trigger e cypress times`,()=>{
+
+    cy.get('input[type="range"]#level').invoke('val',`${i+1}`).trigger('change')
+    cy.contains('#level-paragraph',`You're on level: ${i+1}`).should('be.visible')
+
+  })
 })
+
+  it('Comando blur para retirar o foco do elemento',()=>{
+        
+
+    cy.get('#date').type('2025-12-10').blur()
+    cy.contains('#date-paragraph',"The date you've selected is: 2025-12-10").should('be.visible')
+
+
+  })
+
+  it('Utilizando o Cypress env para não vazar dados no log do cypress',()=>{
+
+    cy.get('#password').type(Cypress.env('senha'),{log:false})
+    cy.get('#show-password-checkbox').check()
+    cy.get('input[type="text"]#password').should('have.value',Cypress.env('senha'),{log:false}).and('be.visible')
+  })
+
+  it('Have lenght para pegar o tamanho de uma lista',()=>{
+
+    cy.get('ul#animals li').should('have.length',5)
+
+  })
+
+  it('Comando clock para parar a data do servidor',()=>{
+
+     cy.get('p#date-section-paragraph strong').should('have.text','2025-06-11')
+
+})
+
+it('Comando then para armazenar o dado de um elemento e interagir com outro',()=>{
+
+  cy.get('#timestamp').then((element)=>{
+    console.log(element)
+    const value = element[0].innerText
+    cy.get('#code').type(value)
+    cy.contains('button','Submit').click()
+    cy.contains('span',"Congrats! You've entered the correct code.").should('be.visible')
+
+  })
+    })
+  it('Lendo um arquivo com o readFile',()=>{
+    cy.get('a[download="example.txt"]').click()
+    cy.readFile('cypress/downloads/example.txt').should('be.equal','Hello, World!')
+    
+  })
+})
+
+
